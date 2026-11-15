@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111827">
+  <meta name="description" content="A Snake-Eye Duel Links replay study and decision trainer.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <title>Snake-Eye Duel Links Trainer</title>
+</head>
+<body>
+  <header class="site-header">
+    <div>
+      <p class="eyebrow">DUEL LINKS · PRACTICE LAB</p>
+      <h1>Snake-Eye Trainer</h1>
+      <p class="subhead">Study the replay. Understand the decisions. Practice the next one.</p>
+    </div>
+    <span class="version">Fresh start · v1.0</span>
+  </header>
+
+  <nav class="tabs" aria-label="Main navigation">
+    <button class="tab active" data-view="replay">Replay study</button>
+    <button class="tab" data-view="lessons">Key lessons</button>
+    <button class="tab" data-view="practice">Decision practice</button>
+    <button class="tab" data-view="notes">My notes</button>
+  </nav>
+
+  <main>
+    <section id="replay" class="view active">
+      <div class="intro panel">
+        <div>
+          <p class="eyebrow">SOURCE REPLAY</p>
+          <h2>Dark Magician matchup</h2>
+          <p>This study is based on the uploaded move log. The source contains detailed move-by-move commentary for this duel; the other three duels are listed but do not have comparable detail.</p>
+        </div>
+        <div class="result">
+          <strong>Win</strong>
+          <span>Opponent surrendered · 4:46</span>
+          <span>No LP lost, according to the log</span>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="section-heading">
+          <div><p class="eyebrow">TURN-BY-TURN</p><h2>Replay timeline</h2></div>
+          <label class="filter-label">Filter
+            <select id="turnFilter">
+              <option value="all">All turns</option>
+              <option value="1">Your Turn 1</option>
+              <option value="2">Opponent Turn 2</option>
+              <option value="3">Your Turn 3</option>
+              <option value="4">Opponent Turn 4</option>
+            </select>
+          </label>
+        </div>
+        <div id="timeline" class="timeline" aria-live="polite"></div>
+      </div>
+      <article id="stepDetail" class="panel detail-panel" aria-live="polite">
+        <p class="eyebrow">SELECT A REPLAY STEP</p>
+        <h2>Choose an event from the timeline</h2>
+        <p>The explanation and the next setup will appear here.</p>
+      </article>
+    </section>
+
+    <section id="lessons" class="view">
+      <div class="panel">
+        <p class="eyebrow">TAKEAWAYS FROM THE CREATOR'S COMMENTARY</p>
+        <h2>Key lessons</h2>
+        <div id="lessonList" class="lesson-list"></div>
+      </div>
+      <div class="panel caution">
+        <h3>Important source limitations</h3>
+        <p>The log says some on-screen text was unreadable and timestamps are approximate. It distinguishes visible effect text, creator commentary, and card-logic inference. This trainer preserves that distinction instead of presenting inferred details as confirmed replay facts.</p>
+      </div>
+    </section>
+
+    <section id="practice" class="view">
+      <div class="panel">
+        <p class="eyebrow">CHECK YOUR DECISION-MAKING</p>
+        <h2>Replay decision practice</h2>
+        <p>Answer using the information recorded in the replay. Feedback explains what the log supports; it does not claim to simulate the full Duel Links rules engine.</p>
+        <div id="quiz" class="quiz"></div>
+        <div class="row">
+          <button id="nextQuestion" class="primary">Next question</button>
+          <button id="restartQuiz" class="secondary">Restart practice</button>
+        </div>
+        <p id="quizProgress" class="muted"></p>
+      </div>
+    </section>
+
+    <section id="notes" class="view">
+      <div class="panel">
+        <p class="eyebrow">LOCAL TO THIS BROWSER</p>
+        <h2>Your practice notes</h2>
+        <p>Write down what you would do differently, which interruption you want to test, or what you want to remember next time.</p>
+        <label for="notesText">Notes</label>
+        <textarea id="notesText" rows="10" placeholder="Example: Revisit whether Secrets of Dark Magic should have been the negate priority..."></textarea>
+        <div class="row">
+          <button id="saveNotes" class="primary">Save notes</button>
+          <button id="clearNotes" class="secondary">Clear notes</button>
+          <span id="notesStatus" class="muted" role="status"></span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>Unofficial study aid. Not affiliated with Konami. Verify current card text, skill restrictions, and Duel Links legality in-game.</footer>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
